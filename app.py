@@ -1,8 +1,8 @@
-from flask import Flask, request, jsonify
 from solana.rpc.api import Client as SolanaClient
-from solana.keypair import Keypair
+from solana.account import Account
 import base64
 import sqlite3
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 SOLANA_RPC_URL = "https://api.mainnet-beta.solana.com"
@@ -24,18 +24,18 @@ init_db()
 
 # Create a Solana Wallet for a User
 def create_wallet(user_id, username):
-    keypair = Keypair()
-    public_key = keypair.public_key
-    secret_key = base64.b64encode(keypair.secret_key).decode('utf-8')
+    account = Account()
+    public_key = str(account.public_key())
+    secret_key = base64.b64encode(account.secret_key()).decode('utf-8')
 
     conn = sqlite3.connect('wallets.db')
     c = conn.cursor()
     c.execute("INSERT INTO users (user_id, username, public_key, secret_key) VALUES (?, ?, ?, ?)",
-              (user_id, username, str(public_key), secret_key))
+              (user_id, username, public_key, secret_key))
     conn.commit()
     conn.close()
 
-    return str(public_key), secret_key
+    return public_key, secret_key
 
 @app.route('/api/create_wallet', methods=['POST'])
 def create_wallet_endpoint():
