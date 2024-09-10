@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Solana Wallet App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wallet-container">
+        <h2 id="username">Yansh</h2>
+        <div class="balance">
+            <p>Total Balance:</p>
+            <h1 id="total-balance">0.00 ₹</h1>
+        </div>
+        <div class="token-balance">
+            <p>SOL:</p>
+            <h2 id="sol-balance">0 SOL</h2>
+        </div>
+        <div class="token-balance">
+            <p>$SLICKS:</p>
+            <h2 id="slicks-balance">0 SLICKS</h2>
+        </div>
+        <div class="actions">
+            <button onclick="receive()">Receive</button>
+            <button onclick="swap()">Swap</button>
+            <button onclick="send()">Send</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
