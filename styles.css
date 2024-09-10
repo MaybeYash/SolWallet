@@ -1,0 +1,36 @@
+body {
+    background-color: #111;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.wallet-container {
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.balance h1, .token-balance h2 {
+    margin: 10px 0;
+}
+
+.actions button {
+    background-color: #444;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.actions button:hover {
+    background-color: #555;
+}
